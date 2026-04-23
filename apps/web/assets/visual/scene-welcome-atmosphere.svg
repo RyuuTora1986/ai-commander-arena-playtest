@@ -1,0 +1,23 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="welcomeGlowBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(380 180) rotate(32) scale(520 420)">
+      <stop stop-color="#4CE7D0" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#4CE7D0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="welcomeGlowRed" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1240 190) rotate(145) scale(460 360)">
+      <stop stop-color="#FF7D8F" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#FF7D8F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="welcomeSweep" x1="250" y1="120" x2="1300" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7BC4FF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#7BC4FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="32" fill="#07111A"/>
+  <rect width="1600" height="900" fill="url(#welcomeGlowBlue)"/>
+  <rect width="1600" height="900" fill="url(#welcomeGlowRed)"/>
+  <path d="M250 620C442 490 608 392 782 337C978 276 1174 282 1348 338" stroke="url(#welcomeSweep)" stroke-width="2"/>
+  <path d="M420 700L804 322L1208 630" stroke="rgba(237,243,250,0.08)" stroke-width="3"/>
+  <circle cx="804" cy="322" r="78" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <circle cx="804" cy="322" r="34" fill="rgba(255,200,90,0.16)" stroke="rgba(255,200,90,0.45)" stroke-width="2"/>
+</svg>

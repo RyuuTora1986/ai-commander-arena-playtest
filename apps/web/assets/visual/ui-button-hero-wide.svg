@@ -1,0 +1,19 @@
+<svg width="760" height="176" viewBox="0 0 760 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroFill" x1="32" y1="24" x2="650" y2="152" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#143247"/>
+      <stop offset="0.48" stop-color="#0E2434"/>
+      <stop offset="1" stop-color="#0A1A27"/>
+    </linearGradient>
+    <linearGradient id="heroEdge" x1="54" y1="24" x2="670" y2="152" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6FE2FF"/>
+      <stop offset="0.6" stop-color="#F3C86B"/>
+      <stop offset="1" stop-color="#FFF1B8"/>
+    </linearGradient>
+  </defs>
+  <path d="M40 26H590L718 88L590 150H40L18 128V48L40 26Z" fill="url(#heroFill)"/>
+  <path d="M40 26H590L718 88L590 150H40L18 128V48L40 26Z" stroke="url(#heroEdge)" stroke-width="4"/>
+  <path d="M76 54H528L610 88L528 122H76" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <path d="M92 88H496" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+  <path d="M628 58L676 88L628 118" fill="rgba(243,200,107,0.22)" stroke="rgba(243,200,107,0.66)" stroke-width="2"/>
+</svg>

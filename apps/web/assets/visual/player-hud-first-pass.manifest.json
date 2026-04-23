@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "stylePack": "player-hud-first-pass",
+  "direction": "minimal-sci-fi-competitive",
+  "assets": [
+    {
+      "id": "map-atmosphere",
+      "path": "/apps/web/assets/visual/player-hud-map-atmosphere.svg",
+      "role": "arena-backdrop"
+    },
+    {
+      "id": "hud-frame",
+      "path": "/apps/web/assets/visual/player-hud-frame.svg",
+      "role": "ui-frame"
+    },
+    {
+      "id": "crest-blue",
+      "path": "/apps/web/assets/visual/commander-crest-blue.svg",
+      "role": "commander-crest"
+    },
+    {
+      "id": "crest-red",
+      "path": "/apps/web/assets/visual/commander-crest-red.svg",
+      "role": "commander-crest"
+    },
+    {
+      "id": "prime-plate",
+      "path": "/apps/web/assets/visual/prime-objective-plate.svg",
+      "role": "objective-plate"
+    },
+    {
+      "id": "summary-atmosphere",
+      "path": "/apps/web/assets/visual/identity-summary-atmosphere.svg",
+      "role": "postmatch-atmosphere"
+    }
+  ]
+}

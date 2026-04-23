@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Commander Arena | 0.3.0 Web Playtest</title>
+    <meta
+      name="description"
+      content="AI Commander Arena 当前 UX-first 切片的对外试玩入口。先看得懂，再决定要不要再来一局。"
+    />
+    <style>
+      :root {
+        --bg: #060b12;
+        --panel: rgba(7, 16, 25, 0.82);
+        --panel-strong: rgba(8, 18, 29, 0.92);
+        --line: rgba(126, 158, 188, 0.2);
+        --ink: #edf3fa;
+        --muted: rgba(237, 243, 250, 0.66);
+        --blue: #59d8ff;
+        --red: #ff7a7a;
+        --amber: #f3c86b;
+        --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        color: var(--ink);
+        font-family: "Bahnschrift", "Segoe UI", "Microsoft YaHei", sans-serif;
+        background:
+          radial-gradient(circle at 18% 14%, rgba(89, 216, 255, 0.16), transparent 22%),
+          radial-gradient(circle at 82% 12%, rgba(255, 122, 122, 0.16), transparent 24%),
+          linear-gradient(180deg, #08111b 0%, #040910 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.32;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: radial-gradient(circle at center, black 24%, transparent 82%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .playtest-shell {
+        width: min(1400px, calc(100vw - 40px));
+        margin: 0 auto;
+        padding: 28px 0 48px;
+      }
+
+      .playtest-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 420px);
+        gap: 22px;
+        align-items: stretch;
+        margin-bottom: 24px;
+      }
+
+      .hero-poster,
+      .hero-panel,
+      .focus-card,
+      .journey-panel {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(9, 18, 29, 0.92), rgba(6, 12, 18, 0.94));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero-poster {
+        position: relative;
+        overflow: hidden;
+        min-height: 620px;
+        border-radius: 34px;
+        padding: 34px;
+        display: grid;
+        align-content: end;
+        background:
+          linear-gradient(180deg, rgba(4, 8, 14, 0.18), rgba(4, 8, 14, 0.72)),
+          url("./apps/web/assets/visual/scene-home-feature-duel-hero.png") center/cover no-repeat,
+          linear-gradient(180deg, rgba(9, 18, 29, 0.92), rgba(6, 12, 18, 0.94));
+      }
+
+      .hero-poster::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 24% 22%, rgba(89, 216, 255, 0.2), transparent 24%),
+          radial-gradient(circle at 78% 18%, rgba(255, 122, 122, 0.18), transparent 26%);
+        pointer-events: none;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 14px;
+        max-width: 34rem;
+      }
+
+      .hero-kicker,
+      .panel-kicker,
+      .focus-card span {
+        color: var(--amber);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h1 {
+        margin: 0;
+        font-size: clamp(48px, 5.4vw, 88px);
+        line-height: 0.92;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-copy p {
+        margin: 0;
+        color: rgba(237, 243, 250, 0.8);
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .hero-actions,
+      .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero-button,
+      .hero-link {
+        min-height: 54px;
+        padding: 0 20px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--ink);
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: transform 140ms ease, filter 140ms ease, border-color 140ms ease;
+      }
+
+      .hero-button {
+        background: linear-gradient(180deg, rgba(243, 200, 107, 0.22), rgba(243, 200, 107, 0.08));
+        border-color: rgba(243, 200, 107, 0.28);
+      }
+
+      .hero-link {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .hero-button:hover,
+      .hero-link:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.06);
+      }
+
+      .hero-panel {
+        border-radius: 30px;
+        padding: 26px 24px;
+        display: grid;
+        gap: 22px;
+        align-content: start;
+      }
+
+      .status-block {
+        display: grid;
+        gap: 10px;
+      }
+
+      .status-block strong {
+        font-size: 28px;
+        letter-spacing: 0.08em;
+      }
+
+      .status-block p,
+      .journey-panel p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .meta-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 14px;
+        width: fit-content;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(237, 243, 250, 0.76);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      .focus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .focus-card {
+        border-radius: 24px;
+        padding: 22px 20px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .focus-card p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      .journey-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .journey-panel {
+        border-radius: 26px;
+        padding: 22px 20px 20px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .journey-art {
+        aspect-ratio: 16 / 10;
+        border-radius: 18px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      }
+
+      .journey-panel ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 14px;
+      }
+
+      .journey-panel li {
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+      }
+
+      .journey-panel li strong {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(243, 200, 107, 0.12);
+        border: 1px solid rgba(243, 200, 107, 0.18);
+        color: rgba(255, 219, 142, 0.94);
+        letter-spacing: 0.12em;
+      }
+
+      .journey-panel li span {
+        color: rgba(237, 243, 250, 0.76);
+        line-height: 1.55;
+      }
+
+      .journey-panel footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .journey-footnote {
+        margin-top: 18px;
+        color: rgba(237, 243, 250, 0.5);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      @media (max-width: 1120px) {
+        .playtest-hero,
+        .focus-grid,
+        .journey-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-poster {
+          min-height: 520px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .playtest-shell {
+          width: min(100vw - 18px, 100vw);
+          padding-top: 18px;
+        }
+
+        .hero-poster,
+        .hero-panel,
+        .focus-card,
+        .journey-panel {
+          border-radius: 24px;
+        }
+
+        .hero-poster {
+          min-height: 460px;
+          padding: 22px;
+        }
+
+        .hero-copy h1 {
+          font-size: clamp(38px, 12vw, 54px);
+        }
+
+        .hero-copy p,
+        .focus-card p {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="playtest-shell">
+      <section class="playtest-hero">
+        <article class="hero-poster">
+          <div class="hero-copy">
+            <span class="hero-kicker">0.3.0 Web Playtest</span>
+            <h1>AI COMMANDER ARENA</h1>
+            <p>当前最强切片已经不是功能原型，而是一条完整的欢迎页 -> 赛前手册 -> 观战对局 -> 赛后复盘主流程。</p>
+            <p>这轮外测只验证一件事：陌生玩家能不能看懂，并且愿不愿意立刻再来一局。</p>
+            <div class="hero-actions">
+              <a class="hero-button" href="./apps/web/playtest.html">开始试玩</a>
+              <a class="hero-link" href="https://github.com/RyuuTora1986/ai-commander-arena/issues/new?template=web-playtest-feedback.yml" target="_blank" rel="noreferrer">提交反馈</a>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-panel">
+          <section class="status-block">
+            <span class="panel-kicker">试玩边界</span>
+            <strong>只放当前 UX-first 切片</strong>
+            <p>不扩账号、不扩联网、不扩联赛。先把“看得懂”和“想再来一局”验证清楚。</p>
+          </section>
+
+          <section class="meta-list">
+            <span class="meta-pill">单局 2 到 4 分钟</span>
+            <span class="meta-pill">建议桌面浏览器 + 耳机</span>
+            <span class="meta-pill">v0.3.0 · 76bf8dd · 2026-04-23 07:27</span>
+          </section>
+
+          <section class="status-block">
+            <span class="panel-kicker">快速入口</span>
+            <div class="quick-links">
+              <a class="hero-link" href="./apps/web/playtest.html?scene=prep">直接看赛前</a>
+              <a class="hero-link" href="./apps/web/playtest.html?scene=match&speed=8">直接看战中</a>
+              <a class="hero-link" href="./apps/web/playtest.html?scene=result">直接看赛后</a>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="focus-grid">
+        
+    <article class="focus-card">
+      <span>TEST FOCUS</span>
+      <p>第一眼能不能看懂这是一场 AI 指挥官对抗</p>
+    </article>
+  
+    <article class="focus-card">
+      <span>TEST FOCUS</span>
+      <p>赛前战术手册选择会不会影响你对这一局的期待</p>
+    </article>
+  
+    <article class="focus-card">
+      <span>TEST FOCUS</span>
+      <p>赛后结算会不会推动你立刻再开一局</p>
+    </article>
+  
+      </section>
+
+      <section class="journey-grid">
+        <article class="journey-panel">
+          <div class="journey-art" style="background-image: url('./apps/web/assets/visual/scene-prep-roster-blue.png');"></div>
+          <span class="panel-kicker">试玩步骤</span>
+          <ul>
+            
+    <li>
+      <strong>01</strong>
+      <span>从欢迎页进入主界面，跑完一局完整流程。</span>
+    </li>
+  
+    <li>
+      <strong>02</strong>
+      <span>赛前至少切换一次战术手册，再观察赛中头条和演出提示。</span>
+    </li>
+  
+    <li>
+      <strong>03</strong>
+      <span>赛后根据 why-win、关键转折和再来一局冲动来提交反馈。</span>
+    </li>
+  
+          </ul>
+        </article>
+
+        <article class="journey-panel">
+          <div class="journey-art" style="background-image: url('./apps/web/assets/visual/scene-match-arena-topdown.png');"></div>
+          <span class="panel-kicker">你会看到什么</span>
+          <p>赛中重点已经压成玩家语言。先看头条、Prime 窗口和战术席，再判断 AI 风格差异有没有真的被看见。</p>
+          <footer>
+            <a class="hero-link" href="./apps/web/playtest.html?scene=welcome">从欢迎页进入</a>
+            <a class="hero-link" href="./apps/web/playtest.html?scene=match&speed=4">直接看慢速战中</a>
+          </footer>
+        </article>
+
+        <article class="journey-panel">
+          <div class="journey-art" style="background-image: url('./apps/web/assets/visual/scene-result-hero.png');"></div>
+          <span class="panel-kicker">反馈回收</span>
+          <p>请优先写“哪里一眼看懂了 / 哪里没看懂 / 哪个瞬间让你想继续玩 / 哪个点把你拉出了体验”。</p>
+          <footer>
+            <a class="hero-button" href="https://github.com/RyuuTora1986/ai-commander-arena/issues/new?template=web-playtest-feedback.yml" target="_blank" rel="noreferrer">打开反馈表</a>
+          </footer>
+        </article>
+      </section>
+
+      <p class="journey-footnote">构建说明：v0.3.0 · 76bf8dd · 2026-04-23 07:27。若作为 GitHub Pages 部署，入口默认是仓库子路径根目录。</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<svg width="760" height="164" viewBox="0 0 760 164" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="plateFill" x1="0" y1="82" x2="760" y2="82" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="rgba(17,37,58,0.94)"/>
+      <stop offset="0.5" stop-color="rgba(12,26,42,0.98)"/>
+      <stop offset="1" stop-color="rgba(46,18,26,0.96)"/>
+    </linearGradient>
+  </defs>
+  <path d="M46 28H714L746 82L714 136H46L14 82L46 28Z" fill="url(#plateFill)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+  <path d="M66 46H694L714 82L694 118H66L46 82L66 46Z" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
+  <path d="M46 28H238" stroke="rgba(76,231,208,0.64)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M714 28H522" stroke="rgba(255,125,143,0.64)" stroke-width="4" stroke-linecap="round"/>
+</svg>

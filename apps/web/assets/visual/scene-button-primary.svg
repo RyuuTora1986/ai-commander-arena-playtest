@@ -1,0 +1,19 @@
+<svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="primaryFill" x1="48" y1="28" x2="592" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#15344A"/>
+      <stop offset="0.42" stop-color="#102535"/>
+      <stop offset="1" stop-color="#0C1C2A"/>
+    </linearGradient>
+    <linearGradient id="primaryEdge" x1="68" y1="20" x2="572" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#68D9FF" stop-opacity="0.9"/>
+      <stop offset="0.55" stop-color="#4CE7D0" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#FFC85A" stop-opacity="0.72"/>
+    </linearGradient>
+  </defs>
+  <path d="M36 20H508L604 80L508 140H36L20 120V40L36 20Z" fill="url(#primaryFill)"/>
+  <path d="M36 20H508L604 80L508 140H36L20 120V40L36 20Z" stroke="url(#primaryEdge)" stroke-width="4"/>
+  <path d="M62 44H474L544 80L474 116H62" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+  <path d="M78 80H442" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <circle cx="540" cy="80" r="18" fill="rgba(255,200,90,0.18)" stroke="rgba(255,200,90,0.52)" stroke-width="2"/>
+</svg>

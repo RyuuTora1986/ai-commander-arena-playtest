@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="homeBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 220) rotate(22) scale(480 360)">
+      <stop stop-color="#4CE7D0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#4CE7D0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="homeRed" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1320 700) rotate(180) scale(420 320)">
+      <stop stop-color="#FF7D8F" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#FF7D8F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" rx="32" fill="#07111A"/>
+  <rect width="1600" height="900" fill="url(#homeBlue)"/>
+  <rect width="1600" height="900" fill="url(#homeRed)"/>
+  <rect x="118" y="160" width="460" height="240" rx="26" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="118" y="430" width="330" height="180" rx="22" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="470" y="430" width="330" height="180" rx="22" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M1040 180L1440 180" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <path d="M1040 270L1360 270" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <path d="M1040 360L1440 360" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <circle cx="1180" cy="600" r="180" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+</svg>

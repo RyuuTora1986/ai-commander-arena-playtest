@@ -1,0 +1,21 @@
+{
+  "visualSystem": "scene-ui-first-pass",
+  "referenceDate": "2026-04-19",
+  "styleDirection": "minimal sci-fi arena broadcast",
+  "assets": {
+    "welcomeAtmosphere": "scene-welcome-atmosphere.png",
+    "homeAtmosphere": "scene-home-atmosphere.png",
+    "prepAtmosphere": "scene-prep-atmosphere.png",
+    "resultAtmosphere": "scene-result-atmosphere.png",
+    "sceneFrame": "scene-ui-frame.svg",
+    "primaryButton": "button-primary.png",
+    "secondaryButton": "button-secondary.png",
+    "modalFrame": "scene-modal-frame.svg",
+    "packCardSurface": "scene-pack-card-surface.svg",
+    "titleBar": "scene-title-bar.svg",
+    "identityCardBlue": "scene-identity-card-blue.svg",
+    "identityCardRed": "scene-identity-card-red.svg",
+    "matchArenaTopdown": "scene-match-arena-topdown.png"
+  },
+  "sourceReferenceBoard": "../../../docs/superpowers/visual-references/2026-04-19-scene-refs/index.html"
+}

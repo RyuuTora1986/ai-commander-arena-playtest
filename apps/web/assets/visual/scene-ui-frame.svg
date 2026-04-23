@@ -1,0 +1,7 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="1580" height="880" rx="34" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <path d="M72 10H320L370 56H518" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <path d="M1528 10H1280L1230 56H1082" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <path d="M10 760V828L72 890" stroke="rgba(76,231,208,0.18)" stroke-width="2"/>
+  <path d="M1590 760V828L1528 890" stroke="rgba(255,125,143,0.18)" stroke-width="2"/>
+</svg>

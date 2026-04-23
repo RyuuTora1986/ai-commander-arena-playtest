@@ -1,0 +1,16 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="prepSplit" x1="240" y1="450" x2="1360" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4CE7D0" stop-opacity="0.18"/>
+      <stop offset="0.5" stop-color="#FFC85A" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#FF7D8F" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="32" fill="#07111A"/>
+  <path d="M260 450H1340" stroke="url(#prepSplit)" stroke-width="3"/>
+  <rect x="160" y="210" width="360" height="430" rx="28" fill="rgba(255,255,255,0.02)" stroke="rgba(76,231,208,0.24)" stroke-width="2"/>
+  <rect x="1080" y="210" width="360" height="430" rx="28" fill="rgba(255,255,255,0.02)" stroke="rgba(255,125,143,0.24)" stroke-width="2"/>
+  <rect x="630" y="260" width="340" height="320" rx="32" fill="rgba(255,255,255,0.024)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <circle cx="800" cy="420" r="72" fill="rgba(255,200,90,0.08)" stroke="rgba(255,200,90,0.38)" stroke-width="2"/>
+  <circle cx="800" cy="420" r="32" fill="rgba(255,200,90,0.18)" stroke="rgba(255,200,90,0.54)" stroke-width="2"/>
+</svg>
